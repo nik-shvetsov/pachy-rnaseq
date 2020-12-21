@@ -1,0 +1,27 @@
+{
+    "pipeline": {
+        "name": "salmon_quant-${id}"
+    },
+    "description": "This part of the pipeline is quantifying samples. Output are counts for reads.",
+    "transform": {
+        "image": "nikshv/pachy-salmon:0.11.3",
+        "cmd": ["python3", "salmon.py", "-i","/pfs/trimmomatic-${id}", "-m", "quant", "-x", "/pfs/salmon_idx-${id}", "-l", "A", "-r", "single", "-a", "--noLengthCorrection"]
+    },
+    "input": {
+        "cross": [
+        {
+            "pfs": {
+                "repo": "trimmomatic-${id}",
+                "glob": "/*"
+            }
+        },
+        {
+            "pfs": {
+                "repo": "salmon_idx-${id}",
+                "glob": "/"
+            }
+        }
+        ]
+    },
+    "enable_stats": true
+}

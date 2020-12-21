@@ -1,0 +1,17 @@
+{
+    "pipeline": {
+        "name": "salmon_idx-${id}"
+    },
+    "description": "This part of the pipeline is indexing the reference genome file for the quantification process.",
+    "transform": {
+        "image": "nikshv/pachy-salmon:0.11.3",
+        "cmd": ["python3", "salmon.py", "-i", "/pfs/input_transcr_grch38_v86-${id}", "-m", "index", "-a", "-k 21 --perfectHash"]
+    },
+    "input": {
+        "pfs": {
+            "repo": "input_transcr_grch38_v86-${id}",
+            "glob": "/"
+        }
+    },
+    "enable_stats": true
+}

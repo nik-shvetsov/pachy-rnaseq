@@ -1,0 +1,17 @@
+{
+    "pipeline": {
+        "name": "fastqc_post-${id}"
+    },
+    "description": "This part of the pipeline perform quality control after trimming. Output of this process is a report.",
+    "transform": {
+        "image": "nikshv/pachy-fastqc:0.11.8",
+        "cmd": ["python3", "fastqc.py", "-i", "/pfs/trimmomatic-${id}"]
+    },
+    "input": {
+        "pfs": {
+          "repo": "trimmomatic-${id}",
+          "glob": "/*"
+        }
+    },
+    "enable_stats": true
+}

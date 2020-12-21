@@ -1,0 +1,17 @@
+{
+    "pipeline": {
+        "name": "tximport-${id}"
+    },
+    "description": "This part of the pipeline is for anaysis with R script with use of tximport library.",
+    "transform": {
+        "image": "nikshv/pachy-tximport:1.10.0",
+        "cmd": ["python3", "tximport.py", "-i", "/pfs/salmon_quant-${id}", "-e", "v86"]
+    },
+    "input": {
+        "pfs": {
+            "repo": "salmon_quant-${id}",
+            "glob": "/"
+        }
+    },
+    "enable_stats": true
+}

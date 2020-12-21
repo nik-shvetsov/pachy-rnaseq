@@ -1,0 +1,17 @@
+{
+    "pipeline": {
+        "name": "trimmomatic-${id}"
+    },
+    "description": "This part of the pipeline perform trimming of the input data via Trimmomatic tool. Output of this process is trimmed data",
+    "transform": {
+      "image": "nikshv/pachy-trimmomatic:0.38",
+      "cmd": ["python3", "trimmomatic.py", "-i", "input-${id}", "-m", "SE", "-q", "-phred33", "-c", "ILLUMINACLIP:./trimmomatic/adapters/TruSeq3-SE.fa:2:30:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:21"]
+    },
+    "input": {
+        "pfs": {
+            "repo": "input-${id}",
+            "glob": "/*"
+        }
+    },
+    "enable_stats": true
+}
