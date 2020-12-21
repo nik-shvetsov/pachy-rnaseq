@@ -61,7 +61,7 @@ Quality control before and after trimming procedure. Command: \
 
 * trimmomatic \
 Trimming adapters from raw files. Command: \
-```python trimmomatic.py -i input-${id} -m SE -q -phred33 -c ILLUMINACLIP:./trimmomatic/adapters/TruSeq3-SE.fa:2:30:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:21``` \
+```python trimmomatic.py -i input-${id} -m SE -q -phred33 -c "ILLUMINACLIP:./trimmomatic/adapters/TruSeq3-SE.fa:2:30:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:21"``` \
 '-i' indicates input folder with *.fastq files. '-m' means mode - single end (SE) or paired end (PE). '-q' indicates format to covert quality scores (pred33 or pred64). '-c' is a string with additional arguments: specified adapter for fastq files, remove leading and trailing clipping, use sliding window for clipping with size 4 and quality threshold 15, drop reads below 21 bases long.
 
 * salmon - indexing \
